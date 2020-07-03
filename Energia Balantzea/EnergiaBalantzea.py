@@ -124,7 +124,7 @@ def maskaragroen(): #bakarrik behin exekutatu mask.nc sortzeko.
     ony.long_name="Bektore unitarioaren osagai meridionala"
     #ony[:,:]=np.zeros((nlat,nlon),'d')
 
-    for ilon in range(nlon):
+for ilon in range(nlon):
         for ilat in range(nlat): 
             x=0.
             y=0.      
@@ -133,29 +133,32 @@ def maskaragroen(): #bakarrik behin exekutatu mask.nc sortzeko.
 
             if (omask[ilat,ilon]>0.):   #  groenlandian dagoela ikusi dugularik lehenik eta behin puntu positiboak
                 if (omask[ilat,ilon+1]==0.):
-                    x=x+math.sqrt(2.)
+                    x=x+1.
                 if (omask[ilat,ilon+1]>0.):
                     x=x+ 0.
                 if (omask[ilat-1,ilon]==0.):
-                    y= y+ math.sqrt(2.)
+                    y= y+ 1.
                 if (omask[ilat-1,ilon]>0.):
                     y=y+ 0.
                 
                 if (omask[ilat,ilon-1]==0.): #orain negatiboak
-                    x=x-math.sqrt(2.)
+                    x=x-1.0
                 if (omask[ilat,ilon-1]>0.):
-                    x=x+0
+                    x=x+0.
                 if (omask[ilat+1,ilon]==0.):
-                    y= y - math.sqrt(2.)
+                    y= y - 1.0
                 if (omask[ilat+1,ilon]>0.):
                     y=y - 0.
             
             
             onx[ilat,ilon]= x 
             ony[ilat,ilon]= y
+            #print "nx", onx[ilat,ilon]
+            #print "ny", ony[ilat,ilon]
+ 
     #------------------------------------------------------------------------------------------------------------------
     onc.close()
-    #Beste funtzioetan erabili ahal diren aldagaiak: frakzioa, nx, ny, lx, ly eta Azalera. 
+    #Beste funtzioetan erabili ahal diren aldagaiak: frakzioa, nx, ny, lx, ly eta Azalera.
 def azaleraGroenlandian(frakald,Azal): #groenlandiako azalera kalkulatzen du 
     AGROEN=np.add.reduce(np.add.reduce(frakald*Azal))
     
