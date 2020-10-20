@@ -28,8 +28,8 @@ def primerprograma(path,path_txt,path_txt_modif):
 
 #================= PROGRAMA PRINCIPAL =================#
 
-path='C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/transcriptions/'
-path_txt= 'C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/txt_transcriptions_1/'
-path_txt_modif= 'C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/txt_transcriptions_2/'
+path='' # Directorio donde se encuentran los archivos ".xml".
+path_txt= '' #Direcotorio para mandar los archivos ".xml" convertidos a "txt"
+path_txt_modif= '' #Directorio para mandar parrafos enumerados por cada sesión en fmt ".txt" 
 
 primerprograma(path,path_txt,path_txt_modif)

@@ -69,10 +69,10 @@ def segundoprograma(path,path_txt,path_txt_modif,path_txt_nombres): #Función pa
 
 #IMPORTANTE: CADA VEZ QUE SE EJECUTA EL PROGRAMA LIMPIAR LOS DIRECTORIOS "path_txt" Y "path_txt_modif"
 
-path='C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/transcriptions/' # Directorio donde se encuentran los archivos ".xml".
-path_txt= 'C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/programa2_txt_1/' #Direcotorio para mandar los archivos ".xml" convertidos a "txt"
-path_txt_modif= 'C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/programa2_txt_2/' #Directorio para mandar nombres+parrafos por cada sesión en fmt ".txt"  
-path_txt_nombres= 'C:/Users/Joseba/Desktop/Joseba/2.tarea/BPdb/BPdbLong/nombres/' #Directorio para mandar sesiones+parrafos por cada hablante en fmt ".txt"  
+path='' # Directorio donde se encuentran los archivos ".xml".
+path_txt= '' #Direcotorio para mandar los archivos ".xml" convertidos a "txt"
+path_txt_modif= '' #Directorio para mandar nombres+parrafos por cada sesión en fmt ".txt"  
+path_txt_nombres= '' #Directorio para mandar sesiones+parrafos por cada hablante en fmt ".txt"  
 
 segundoprograma(path,path_txt,path_txt_modif,path_txt_nombres)
 
