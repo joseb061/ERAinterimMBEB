@@ -1,4 +1,5 @@
-Oinarrizko bibliograan izotz-geruzen gainean eguratsak sortutako hainbat hazkunde eta txikitze
+[EU]
+Oinarrizko bibliografian izotz-geruzen gainean eguratsak sortutako hainbat hazkunde eta txikitze
 prozesuak deskribatzen dira, besteak beste: bero sor 
 uxuak (lurrunketa edo sublimazioa),
 prezipitazioa (euria edota elurra), eguzkiko uhin-luzera laburreko (argi-ikusgai) edo uhin-luzera
