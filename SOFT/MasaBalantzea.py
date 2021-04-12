@@ -187,10 +187,9 @@ def eskalarraW(w1,w2,frakald,Atokiko,azal): #positivo - negtivo
 def urteBat(urtea):
 
     
-    print "-------------------------------------------------------------------------------------"
-    print ""
-    print urtea
-    print ""
+    print ("-------------------------------------------------------------------------------------\n")
+    print (urtea,"\n")
+
     
     
     inc3=nc.Dataset('mask.nc','r',format="NETCDF3_CLASSIC")
@@ -294,9 +293,9 @@ def urteBat(urtea):
         Q[i]= eskalarraQ(fluxeast,fluxnorth,NX,NY,LX,LY,frak,A) #kg/s
         
    
-    print "Urte osoko VAPOR FLUX Q kg/y:", np.sum(Q)*3.154e+7/(1.e+12)
-    print "Urte osoko  mean VAPOR FLUX Q kg/y:", np.mean(Q)*3.154e+7/(1.e+12)
-    print ""
+    print ("Urte osoko VAPOR FLUX Q kg/y:", np.sum(Q)*3.154e+7/(1.e+12))
+    print ("Urte osoko  mean VAPOR FLUX Q kg/y:", np.mean(Q)*3.154e+7/(1.e+12),"\n")
+ 
 
     
     #-------------------------------------------------------------------------------------  W deribatua
@@ -318,7 +317,7 @@ def urteBat(urtea):
         watervaporb=np.array(inc5.variables["tcwv"][tminus,:,:],'d')
         Wderibatua[tini] = eskalarraW(watervapor,watervaporb,frak,Azaleratoki,A) # ENERO-FEBREO , ..., DICIEMBRE-NOVIEMBRE 
     
-    print "Urte osoko  mean VAPOR COLUMN W GT/y:", np.mean(Wderibatua)*3.154e+7/(1.e+12)
+    print ("Urte osoko  mean VAPOR COLUMN W GT/y:", np.mean(Wderibatua)*3.154e+7/(1.e+12))
 
     #---------------------------------------------------------------------------------------------
     Pmean= np.mean(Punit)*(3.154e+7/(1.e+12)) # [Gt/urte]
@@ -329,7 +328,7 @@ def urteBat(urtea):
     nmean= Emean-Pmean-Qmean-Wmean
     Smean= Pmean - Emean - Rmean
 
-    print "urte osoko cumulative Smean:", Smean
+    print ("urte osoko cumulative Smean:", Smean)
 
     itime=inc4.variables["time"]
     itimestr=itime.units

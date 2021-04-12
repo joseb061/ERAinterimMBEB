@@ -124,44 +124,43 @@ def maskaragroen(): #bakarrik behin exekutatu mask.nc sortzeko.
     ony.long_name="Bektore unitarioaren osagai meridionala"
     #ony[:,:]=np.zeros((nlat,nlon),'d')
 
-for ilon in range(nlon):
-        for ilat in range(nlat): 
-            x=0.
-            y=0.      
-            if (omask[ilat,ilon]==0.):    # lehenik eta behin ikusi ea lurra den edo ez
-                continue
+    for ilon in range(nlon):
+            for ilat in range(nlat): 
+                x=0.
+                y=0.      
+                if (omask[ilat,ilon]==0.):    # lehenik eta behin ikusi ea lurra den edo ez
+                    continue
 
-            if (omask[ilat,ilon]>0.):   #  groenlandian dagoela ikusi dugularik lehenik eta behin puntu positiboak
-                if (omask[ilat,ilon+1]==0.):
-                    x=x+1.
-                if (omask[ilat,ilon+1]>0.):
-                    x=x+ 0.
-                if (omask[ilat-1,ilon]==0.):
-                    y= y+ 1.
-                if (omask[ilat-1,ilon]>0.):
-                    y=y+ 0.
+                if (omask[ilat,ilon]>0.):   #  groenlandian dagoela ikusi dugularik lehenik eta behin puntu positiboak
+                    if (omask[ilat,ilon+1]==0.):
+                        x=x+1.
+                    if (omask[ilat,ilon+1]>0.):
+                        x=x+ 0.
+                    if (omask[ilat-1,ilon]==0.):
+                        y= y+ 1.
+                    if (omask[ilat-1,ilon]>0.):
+                        y=y+ 0.
+                    
+                    if (omask[ilat,ilon-1]==0.): #orain negatiboak
+                        x=x-1.0
+                    if (omask[ilat,ilon-1]>0.):
+                        x=x+0.
+                    if (omask[ilat+1,ilon]==0.):
+                        y= y - 1.0
+                    if (omask[ilat+1,ilon]>0.):
+                        y=y - 0.
                 
-                if (omask[ilat,ilon-1]==0.): #orain negatiboak
-                    x=x-1.0
-                if (omask[ilat,ilon-1]>0.):
-                    x=x+0.
-                if (omask[ilat+1,ilon]==0.):
-                    y= y - 1.0
-                if (omask[ilat+1,ilon]>0.):
-                    y=y - 0.
-            
-            
-            onx[ilat,ilon]= x 
-            ony[ilat,ilon]= y
-            #print "nx", onx[ilat,ilon]
-            #print "ny", ony[ilat,ilon]
+                
+                onx[ilat,ilon]= x 
+                ony[ilat,ilon]= y
+                #print "nx", onx[ilat,ilon]
+                #print "ny", ony[ilat,ilon]
  
     #------------------------------------------------------------------------------------------------------------------
     onc.close()
     #Beste funtzioetan erabili ahal diren aldagaiak: frakzioa, nx, ny, lx, ly eta Azalera.
 def azaleraGroenlandian(frakald,Azal): #groenlandiako azalera kalkulatzen du 
     AGROEN=np.add.reduce(np.add.reduce(frakald*Azal))
-    
     return AGROEN
 def eskalarraSW(sw,frakald,Atokiko,azal): #fluxu nebatiboak behera eta fluxu positiboak gora hartu. 
     emaitzasw= np.add.reduce(np.add.reduce(sw*Atokiko*frakald))*(1./86400.) 
@@ -178,10 +177,8 @@ def eskalarraSH(sh,frakald,Atokiko,azal):
 def urteBat(urtea):
 
     
-    print "-------------------------------------------------------------------------------------"
-    print ""
-    print urtea
-    print ""
+    print ("-------------------------------------------------------------------------------------\n")
+    print (urtea,"\n")
     
     
     inc3=nc.Dataset("mask.nc")
@@ -287,7 +284,7 @@ def urteBat(urtea):
         ILH[i+1]= lh[i]
     
     IE= ISW+ILW+ISH+ILH
-    print "hau da neguko SW:", ISW
+    print ("hau da neguko SW:", ISW)
     
     for i in range(5): #invierno
         Nfile= open("/home/joseba/Escritorio/programa_tfg_mayo/Energia_iterim/fitxategiak/Neguko.txt","a")
@@ -299,16 +296,16 @@ def urteBat(urtea):
     Nfile.close()
     #------------------------------------------------   
     E= sw+lw+sh+lh
-    print "short wave W/m**2", (np.mean(sw))
-    print "long wave W/m**2",(np.mean(lw))
-    print "sensible heat W/m**2", (np.mean(sh))
-    print "latent heat W/m**2", (np.mean(lh))
+    print ("short wave W/m**2", np.mean(sw))
+    print ("long wave W/m**2",np.mean(lw))
+    print ("sensible heat W/m**2", np.mean(sh))
+    print ("latent heat W/m**2", np.mean(lh))
     M= (E/(997.*334000.))*(1000.)*(3.154e+7/(1.e+12))
     Emean= np.mean(E)
     Eneto= np.sum(E)
     Mmean= np.mean(M)
-    print "Batazbesteko Energia W/m**2:", (Emean)
-    print "Energia netoa", Eneto
+    print ("Batazbesteko Energia W/m**2:", Emean)
+    print ("Energia netoa", Eneto)
 
 
 
